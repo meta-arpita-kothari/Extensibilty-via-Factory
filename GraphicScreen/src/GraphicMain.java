@@ -23,6 +23,7 @@ public class GraphicMain {
 					+ "6. Get list of shapes overlapping a shape\n" 
 					+ "7. Exit");
 			operationChoice = scanner.nextInt();
+			
 			switch (operationChoice) {
 
 			case 1:
@@ -34,16 +35,21 @@ public class GraphicMain {
 				}
 
 				String choice = scanner.next();
+				boolean flag = false;  // to check the correct shapetype name
 				ShapeType shapeSelected = null;
-				for (ShapeType value : ShapeType.values()) {
-					if (value.name().equalsIgnoreCase(choice)) {
-						shapeSelected = value;
-					}
-				}
 				if (shapeSelected == null) {
 					System.out.println("Invalid shape entered !");
 					break;
 				}
+				for (ShapeType value : ShapeType.values()) {
+					if (value.name().equalsIgnoreCase(choice)) {
+						shapeSelected = value;
+						flag=true;
+					}
+				}
+				if(!flag){
+					System.out.println("Invalid shape entered !");
+				}	break;
 
 				System.out.println("Enter origin coordinate:");
 				System.out.print("X= ");
